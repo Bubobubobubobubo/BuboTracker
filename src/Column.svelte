@@ -1,12 +1,5 @@
 <script>
     export let nbSteps = 12;
-
-    var audioContext = new AudioContext()
-
-    function scheduler() {
-
-    }
-
 </script>
 
 <tracker_column>

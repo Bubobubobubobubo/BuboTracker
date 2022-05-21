@@ -5,6 +5,7 @@
     let nbSteps = 12;
     let table = 'default';
 
+
 </script>
 
 <main>
