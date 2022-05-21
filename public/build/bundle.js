@@ -947,7 +947,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (22:8) {#each [...Array(nbTracks)] as track}
+    // (19:8) {#each [...Array(nbTracks)] as track}
     function create_each_block(ctx) {
     	let column;
     	let current;
@@ -988,7 +988,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(22:8) {#each [...Array(nbTracks)] as track}",
+    		source: "(19:8) {#each [...Array(nbTracks)] as track}",
     		ctx
     	});
 
@@ -999,19 +999,19 @@ var app = (function () {
     	let main;
     	let div;
     	let p0;
-    	let t1;
+    	let t0;
     	let input0;
-    	let t2;
+    	let t1;
     	let p1;
-    	let t4;
+    	let t2;
     	let input1;
-    	let t5;
+    	let t3;
     	let p2;
-    	let t7;
+    	let t4;
     	let input2;
-    	let t8;
+    	let t5;
     	let p3;
-    	let t10;
+    	let t7;
     	let tracker_zone;
     	let current;
     	let mounted;
@@ -1033,51 +1033,48 @@ var app = (function () {
     			main = element("main");
     			div = element("div");
     			p0 = element("p");
-    			p0.textContent = "Steps :";
-    			t1 = space();
+    			t0 = text("Steps : ");
     			input0 = element("input");
-    			t2 = space();
+    			t1 = space();
     			p1 = element("p");
-    			p1.textContent = "Tracks:";
-    			t4 = space();
+    			t2 = text("Tracks: ");
     			input1 = element("input");
-    			t5 = space();
+    			t3 = space();
     			p2 = element("p");
-    			p2.textContent = "Table:";
-    			t7 = space();
+    			t4 = text("Table: ");
     			input2 = element("input");
-    			t8 = space();
+    			t5 = space();
     			p3 = element("p");
     			p3.textContent = "(Enter to change)";
-    			t10 = space();
+    			t7 = space();
     			tracker_zone = element("tracker_zone");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(p0, "class", "tracker_text svelte-1j4xqfh");
-    			add_location(p0, file$1, 11, 8, 245);
     			attr_dev(input0, "type", "number");
-    			attr_dev(input0, "class", "step_modifier svelte-1j4xqfh");
-    			add_location(input0, file$1, 12, 8, 290);
-    			attr_dev(p1, "class", "tracker_text svelte-1j4xqfh");
-    			add_location(p1, file$1, 13, 8, 363);
+    			attr_dev(input0, "class", "step_modifier svelte-avkgcg");
+    			add_location(input0, file$1, 11, 40, 277);
+    			attr_dev(p0, "class", "tracker_text svelte-avkgcg");
+    			add_location(p0, file$1, 11, 8, 245);
     			attr_dev(input1, "type", "number");
-    			attr_dev(input1, "class", "track_modifier svelte-1j4xqfh");
-    			add_location(input1, file$1, 14, 8, 408);
-    			attr_dev(p2, "class", "tracker_text svelte-1j4xqfh");
-    			add_location(p2, file$1, 15, 8, 483);
+    			attr_dev(input1, "class", "track_modifier svelte-avkgcg");
+    			add_location(input1, file$1, 12, 40, 386);
+    			attr_dev(p1, "class", "tracker_text svelte-avkgcg");
+    			add_location(p1, file$1, 12, 8, 354);
     			attr_dev(input2, "type", "text");
-    			attr_dev(input2, "class", "table_modifier svelte-1j4xqfh");
-    			add_location(input2, file$1, 16, 8, 527);
-    			attr_dev(p3, "class", "tracker_text svelte-1j4xqfh");
-    			add_location(p3, file$1, 17, 8, 597);
-    			attr_dev(div, "class", "tracker_modifiers svelte-1j4xqfh");
+    			attr_dev(input2, "class", "table_modifier svelte-avkgcg");
+    			add_location(input2, file$1, 13, 39, 496);
+    			attr_dev(p2, "class", "tracker_text svelte-avkgcg");
+    			add_location(p2, file$1, 13, 8, 465);
+    			attr_dev(p3, "class", "text_hint svelte-avkgcg");
+    			add_location(p3, file$1, 14, 8, 570);
+    			attr_dev(div, "class", "tracker_modifiers svelte-avkgcg");
     			add_location(div, file$1, 10, 4, 205);
-    			attr_dev(tracker_zone, "class", "svelte-1j4xqfh");
-    			add_location(tracker_zone, file$1, 20, 4, 659);
-    			attr_dev(main, "class", "svelte-1j4xqfh");
+    			attr_dev(tracker_zone, "class", "svelte-avkgcg");
+    			add_location(tracker_zone, file$1, 17, 4, 629);
+    			attr_dev(main, "class", "svelte-avkgcg");
     			add_location(main, file$1, 9, 0, 194);
     		},
     		l: function claim(nodes) {
@@ -1087,22 +1084,22 @@ var app = (function () {
     			insert_dev(target, main, anchor);
     			append_dev(main, div);
     			append_dev(div, p0);
-    			append_dev(div, t1);
-    			append_dev(div, input0);
+    			append_dev(p0, t0);
+    			append_dev(p0, input0);
     			set_input_value(input0, /*nbSteps*/ ctx[1]);
-    			append_dev(div, t2);
+    			append_dev(div, t1);
     			append_dev(div, p1);
-    			append_dev(div, t4);
-    			append_dev(div, input1);
+    			append_dev(p1, t2);
+    			append_dev(p1, input1);
     			set_input_value(input1, /*nbTracks*/ ctx[0]);
-    			append_dev(div, t5);
+    			append_dev(div, t3);
     			append_dev(div, p2);
-    			append_dev(div, t7);
-    			append_dev(div, input2);
+    			append_dev(p2, t4);
+    			append_dev(p2, input2);
     			set_input_value(input2, /*table*/ ctx[2]);
-    			append_dev(div, t8);
+    			append_dev(div, t5);
     			append_dev(div, p3);
-    			append_dev(main, t10);
+    			append_dev(main, t7);
     			append_dev(main, tracker_zone);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {

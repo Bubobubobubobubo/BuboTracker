@@ -9,13 +9,10 @@
 
 <main>
     <div class="tracker_modifiers">
-        <p class="tracker_text">Steps : </p>
-        <input type="number" class="step_modifier" bind:value={nbSteps}>
-        <p class="tracker_text">Tracks: </p>
-        <input type="number" class="track_modifier" bind:value={nbTracks}>
-        <p class="tracker_text">Table: </p>
-        <input type="text" class="table_modifier" bind:value={table}>
-        <p class="tracker_text">(Enter to change)</p>
+        <p class="tracker_text">Steps : <input type="number" class="step_modifier" bind:value={nbSteps}></p>
+        <p class="tracker_text">Tracks: <input type="number" class="track_modifier" bind:value={nbTracks}></p>
+        <p class="tracker_text">Table: <input type="text" class="table_modifier" bind:value={table}></p>
+        <p class="text_hint">(Enter to change)</p>
     </div>
 
     <tracker_zone>
@@ -35,24 +32,29 @@
         --front-color-second: #D66853;
     }
 
+
+
     .tracker_modifiers {
         justify-content: center;
         display: inline;
         padding: 10px;
+        margin: 0 10px;
         text-align: center;
     }
+
+  
 
     .tracker_text {
         display: inline;
         font-family:'Courier New', Courier, monospace;
-        font-size: 1vw;
+        font-size: 16px;
     }
 
     .step_modifier, .track_modifier, .table_modifier {
         justify-content: center;
         font-family:'Courier New', Courier, monospace;
-        width: 2vw;
-        font-size: 1vw;
+        width: 3vw;
+        font-size: 16px;
         display: inline;
         border: none;
         background: var(--secondary-background); 
@@ -80,7 +82,7 @@
 
     .table_modifier {
         width: 5vw;
-        font-size: 1vw;
+        font-size: 16px;
     }
 
     main {
@@ -92,5 +94,29 @@
         grid-template-rows: repeat(1fr, 8);
         grid-auto-flow: column;
         gap: 1vh 0vw;
+    }
+
+    @media only screen and (max-width: 800px) {
+
+        .tracker_modifiers {
+            display: grid;
+            padding: 0px; margin: 0 10px;
+            text-align: left;
+            justify-content: left;
+        }
+
+        .tracker_text {
+            justify-content: left;
+            text-align: left;
+            margin: 0 0;
+        }
+        .step_modifier, .track_modifier, .table_modifier {
+            width: 3vh;
+        }
+
+        .text_hint {
+            display: none;
+        }
+
     }
 </style>
