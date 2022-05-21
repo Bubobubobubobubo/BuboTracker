@@ -202,6 +202,12 @@ var app = (function () {
             block.o(local);
         }
     }
+
+    const globals = (typeof window !== 'undefined'
+        ? window
+        : typeof globalThis !== 'undefined'
+            ? globalThis
+            : global);
     function create_component(block) {
         block && block.c();
     }
@@ -415,11 +421,11 @@ var app = (function () {
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[2] = list[i];
+    	child_ctx[1] = list[i];
     	return child_ctx;
     }
 
-    // (19:8) {:else}
+    // (12:8) {:else}
     function create_else_block$1(ctx) {
     	let span;
     	let input;
@@ -433,9 +439,9 @@ var app = (function () {
     			attr_dev(input, "maxlength", "8");
     			attr_dev(input, "type", "text");
     			attr_dev(input, "class", "normalText svelte-1xzgju9");
-    			add_location(input, file$3, 20, 16, 427);
+    			add_location(input, file$3, 13, 16, 348);
     			attr_dev(span, "class", "normalLine svelte-1xzgju9");
-    			add_location(span, file$3, 19, 12, 385);
+    			add_location(span, file$3, 12, 12, 306);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -451,14 +457,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(19:8) {:else}",
+    		source: "(12:8) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (15:8) {#if (n % 4 == 0)}
+    // (8:8) {#if (n % 4 == 0)}
     function create_if_block$1(ctx) {
     	let span;
     	let input;
@@ -472,9 +478,9 @@ var app = (function () {
     			attr_dev(input, "maxlength", "8");
     			attr_dev(input, "type", "text");
     			attr_dev(input, "class", "highlightText svelte-1xzgju9");
-    			add_location(input, file$3, 16, 16, 281);
+    			add_location(input, file$3, 9, 16, 202);
     			attr_dev(span, "class", "highlightLine svelte-1xzgju9");
-    			add_location(span, file$3, 15, 12, 236);
+    			add_location(span, file$3, 8, 12, 157);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -490,19 +496,19 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(15:8) {#if (n % 4 == 0)}",
+    		source: "(8:8) {#if (n % 4 == 0)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (13:4) {#each Array.from(Array(nbSteps).keys()) as n}
+    // (6:4) {#each Array.from(Array(nbSteps).keys()) as n}
     function create_each_block$2(ctx) {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*n*/ ctx[2] % 4 == 0) return create_if_block$1;
+    		if (/*n*/ ctx[1] % 4 == 0) return create_if_block$1;
     		return create_else_block$1;
     	}
 
@@ -539,7 +545,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(13:4) {#each Array.from(Array(nbSteps).keys()) as n}",
+    		source: "(6:4) {#each Array.from(Array(nbSteps).keys()) as n}",
     		ctx
     	});
 
@@ -564,7 +570,7 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(tracker_column, file$3, 11, 0, 128);
+    			add_location(tracker_column, file$3, 4, 0, 49);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -620,15 +626,10 @@ var app = (function () {
     	return block;
     }
 
-    function scheduler() {
-    	
-    }
-
     function instance$3($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Column', slots, []);
     	let { nbSteps = 12 } = $$props;
-    	var audioContext = new AudioContext();
     	const writable_props = ['nbSteps'];
 
     	Object.keys($$props).forEach(key => {
@@ -639,11 +640,10 @@ var app = (function () {
     		if ('nbSteps' in $$props) $$invalidate(0, nbSteps = $$props.nbSteps);
     	};
 
-    	$$self.$capture_state = () => ({ nbSteps, audioContext, scheduler });
+    	$$self.$capture_state = () => ({ nbSteps });
 
     	$$self.$inject_state = $$props => {
     		if ('nbSteps' in $$props) $$invalidate(0, nbSteps = $$props.nbSteps);
-    		if ('audioContext' in $$props) audioContext = $$props.audioContext;
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -947,7 +947,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (19:8) {#each [...Array(nbTracks)] as track}
+    // (20:8) {#each [...Array(nbTracks)] as track}
     function create_each_block(ctx) {
     	let column;
     	let current;
@@ -988,7 +988,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(19:8) {#each [...Array(nbTracks)] as track}",
+    		source: "(20:8) {#each [...Array(nbTracks)] as track}",
     		ctx
     	});
 
@@ -1055,27 +1055,27 @@ var app = (function () {
 
     			attr_dev(input0, "type", "number");
     			attr_dev(input0, "class", "step_modifier svelte-avkgcg");
-    			add_location(input0, file$1, 11, 40, 277);
+    			add_location(input0, file$1, 12, 40, 278);
     			attr_dev(p0, "class", "tracker_text svelte-avkgcg");
-    			add_location(p0, file$1, 11, 8, 245);
+    			add_location(p0, file$1, 12, 8, 246);
     			attr_dev(input1, "type", "number");
     			attr_dev(input1, "class", "track_modifier svelte-avkgcg");
-    			add_location(input1, file$1, 12, 40, 386);
+    			add_location(input1, file$1, 13, 40, 387);
     			attr_dev(p1, "class", "tracker_text svelte-avkgcg");
-    			add_location(p1, file$1, 12, 8, 354);
+    			add_location(p1, file$1, 13, 8, 355);
     			attr_dev(input2, "type", "text");
     			attr_dev(input2, "class", "table_modifier svelte-avkgcg");
-    			add_location(input2, file$1, 13, 39, 496);
+    			add_location(input2, file$1, 14, 39, 497);
     			attr_dev(p2, "class", "tracker_text svelte-avkgcg");
-    			add_location(p2, file$1, 13, 8, 465);
+    			add_location(p2, file$1, 14, 8, 466);
     			attr_dev(p3, "class", "text_hint svelte-avkgcg");
-    			add_location(p3, file$1, 14, 8, 570);
+    			add_location(p3, file$1, 15, 8, 571);
     			attr_dev(div, "class", "tracker_modifiers svelte-avkgcg");
-    			add_location(div, file$1, 10, 4, 205);
+    			add_location(div, file$1, 11, 4, 206);
     			attr_dev(tracker_zone, "class", "svelte-avkgcg");
-    			add_location(tracker_zone, file$1, 17, 4, 629);
+    			add_location(tracker_zone, file$1, 18, 4, 630);
     			attr_dev(main, "class", "svelte-avkgcg");
-    			add_location(main, file$1, 9, 0, 194);
+    			add_location(main, file$1, 10, 0, 195);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1266,6 +1266,8 @@ var app = (function () {
     }
 
     /* src/App.svelte generated by Svelte v3.48.0 */
+
+    const { console: console_1 } = globals;
     const file = "src/App.svelte";
 
     function create_fragment(ctx) {
@@ -1273,16 +1275,57 @@ var app = (function () {
     	let header;
     	let h1;
     	let t1;
-    	let p;
+    	let p0;
     	let t3;
     	let article;
     	let tracker;
     	let t4;
     	let nav;
-    	let h2;
+    	let h20;
     	let t6;
-    	let div;
+    	let p1;
     	let t8;
+    	let p2;
+    	let t9;
+    	let em0;
+    	let t11;
+    	let t12;
+    	let p3;
+    	let t13;
+    	let em1;
+    	let t15;
+    	let em2;
+    	let t17;
+    	let em3;
+    	let t19;
+    	let em4;
+    	let t21;
+    	let em5;
+    	let t23;
+    	let t24;
+    	let div;
+    	let h21;
+    	let t26;
+    	let h30;
+    	let t28;
+    	let p4;
+    	let t30;
+    	let ul0;
+    	let li0;
+    	let t32;
+    	let li1;
+    	let t34;
+    	let li2;
+    	let t36;
+    	let h31;
+    	let t38;
+    	let ul1;
+    	let li3;
+    	let t40;
+    	let li4;
+    	let t42;
+    	let li5;
+    	let t44;
     	let footer;
     	let current;
     	tracker = new Tracker({ $$inline: true });
@@ -1294,40 +1337,129 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "|| BUBO MUSIC TRACKER ||";
     			t1 = space();
-    			p = element("p");
-    			p.textContent = "A music tracker done wrong";
+    			p0 = element("p");
+    			p0.textContent = "A music tracker done wrong";
     			t3 = space();
     			article = element("article");
     			create_component(tracker.$$.fragment);
     			t4 = space();
     			nav = element("nav");
-    			h2 = element("h2");
-    			h2.textContent = "Instructions";
+    			h20 = element("h2");
+    			h20.textContent = "Instructions";
     			t6 = space();
-    			div = element("div");
-    			div.textContent = "Parameters";
+    			p1 = element("p");
+    			p1.textContent = "This is a simple MIDI Tracker using WebMIDI. You can select the number of steps and tracks, pick a tempo, and play simple patterns. I plan to cover all the basic MIDI messages.";
     			t8 = space();
+    			p2 = element("p");
+    			t9 = text("The ");
+    			em0 = element("em");
+    			em0.textContent = "T:table";
+    			t11 = text(" command allows you to switch between tables, allowing you to switch scenes.");
+    			t12 = space();
+    			p3 = element("p");
+    			t13 = text("The ");
+    			em1 = element("em");
+    			em1.textContent = "T:direction";
+    			t15 = text(" command allow you to pick a direction for the tracker: ");
+    			em2 = element("em");
+    			em2.textContent = "normal";
+    			t17 = text(", ");
+    			em3 = element("em");
+    			em3.textContent = "reverse";
+    			t19 = text(", ");
+    			em4 = element("em");
+    			em4.textContent = "random";
+    			t21 = text(",");
+    			em5 = element("em");
+    			em5.textContent = "drunk";
+    			t23 = text(", etc...");
+    			t24 = space();
+    			div = element("div");
+    			h21 = element("h2");
+    			h21.textContent = "Parameters";
+    			t26 = space();
+    			h30 = element("h3");
+    			h30.textContent = "MIDI Device";
+    			t28 = space();
+    			p4 = element("p");
+    			p4.textContent = "Pick MIDI Device:";
+    			t30 = space();
+    			ul0 = element("ul");
+    			li0 = element("li");
+    			li0.textContent = "Test";
+    			t32 = space();
+    			li1 = element("li");
+    			li1.textContent = "Test";
+    			t34 = space();
+    			li2 = element("li");
+    			li2.textContent = "Test";
+    			t36 = space();
+    			h31 = element("h3");
+    			h31.textContent = "Transport";
+    			t38 = space();
+    			ul1 = element("ul");
+    			li3 = element("li");
+    			li3.textContent = "Play";
+    			t40 = space();
+    			li4 = element("li");
+    			li4.textContent = "Pause";
+    			t42 = space();
+    			li5 = element("li");
+    			li5.textContent = "Stop";
+    			t44 = space();
     			footer = element("footer");
     			footer.textContent = "Footer";
-    			attr_dev(h1, "class", "svelte-1d7aist");
-    			add_location(h1, file, 7, 1, 99);
-    			attr_dev(p, "class", "subtitle svelte-1d7aist");
-    			add_location(p, file, 8, 1, 135);
-    			attr_dev(header, "class", "pageHeader svelte-1d7aist");
-    			add_location(header, file, 5, 1, 69);
+    			attr_dev(h1, "class", "svelte-eeqnf9");
+    			add_location(h1, file, 25, 1, 520);
+    			attr_dev(p0, "class", "subtitle svelte-eeqnf9");
+    			add_location(p0, file, 26, 1, 556);
+    			attr_dev(header, "class", "pageHeader svelte-eeqnf9");
+    			add_location(header, file, 23, 1, 490);
     			attr_dev(article, "id", "mainArticle");
-    			attr_dev(article, "class", "svelte-1d7aist");
-    			add_location(article, file, 12, 1, 200);
-    			attr_dev(h2, "class", "svelte-1d7aist");
-    			add_location(h2, file, 17, 2, 279);
-    			attr_dev(nav, "class", "mainNav svelte-1d7aist");
-    			add_location(nav, file, 16, 1, 255);
-    			attr_dev(div, "class", "siteParameters svelte-1d7aist");
-    			add_location(div, file, 20, 1, 311);
-    			attr_dev(footer, "class", "pageFooter svelte-1d7aist");
-    			add_location(footer, file, 22, 1, 358);
-    			attr_dev(main, "class", "svelte-1d7aist");
-    			add_location(main, file, 4, 0, 61);
+    			attr_dev(article, "class", "svelte-eeqnf9");
+    			add_location(article, file, 30, 1, 621);
+    			attr_dev(h20, "class", "svelte-eeqnf9");
+    			add_location(h20, file, 35, 2, 700);
+    			add_location(p1, file, 36, 2, 724);
+    			add_location(em0, file, 37, 9, 917);
+    			add_location(p2, file, 37, 2, 910);
+    			add_location(em1, file, 38, 9, 1023);
+    			add_location(em2, file, 38, 85, 1099);
+    			add_location(em3, file, 38, 102, 1116);
+    			add_location(em4, file, 38, 120, 1134);
+    			add_location(em5, file, 38, 136, 1150);
+    			add_location(p3, file, 38, 2, 1016);
+    			attr_dev(nav, "class", "mainNav svelte-eeqnf9");
+    			add_location(nav, file, 34, 1, 676);
+    			attr_dev(h21, "class", "svelte-eeqnf9");
+    			add_location(h21, file, 43, 2, 1219);
+    			attr_dev(h30, "class", "svelte-eeqnf9");
+    			add_location(h30, file, 45, 2, 1242);
+    			add_location(p4, file, 47, 2, 1266);
+    			attr_dev(li0, "class", "svelte-eeqnf9");
+    			add_location(li0, file, 49, 3, 1319);
+    			attr_dev(li1, "class", "svelte-eeqnf9");
+    			add_location(li1, file, 50, 3, 1336);
+    			attr_dev(li2, "class", "svelte-eeqnf9");
+    			add_location(li2, file, 51, 3, 1353);
+    			attr_dev(ul0, "class", "MIDIMenu svelte-eeqnf9");
+    			add_location(ul0, file, 48, 2, 1294);
+    			attr_dev(h31, "class", "svelte-eeqnf9");
+    			add_location(h31, file, 54, 2, 1378);
+    			attr_dev(li3, "class", "svelte-eeqnf9");
+    			add_location(li3, file, 56, 3, 1424);
+    			attr_dev(li4, "class", "svelte-eeqnf9");
+    			add_location(li4, file, 57, 3, 1441);
+    			attr_dev(li5, "class", "svelte-eeqnf9");
+    			add_location(li5, file, 58, 3, 1459);
+    			attr_dev(ul1, "class", "MIDIMenu svelte-eeqnf9");
+    			add_location(ul1, file, 55, 2, 1399);
+    			attr_dev(div, "class", "siteParameters svelte-eeqnf9");
+    			add_location(div, file, 41, 1, 1187);
+    			attr_dev(footer, "class", "pageFooter svelte-eeqnf9");
+    			add_location(footer, file, 63, 1, 1492);
+    			attr_dev(main, "class", "svelte-eeqnf9");
+    			add_location(main, file, 22, 0, 482);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1337,16 +1469,57 @@ var app = (function () {
     			append_dev(main, header);
     			append_dev(header, h1);
     			append_dev(header, t1);
-    			append_dev(header, p);
+    			append_dev(header, p0);
     			append_dev(main, t3);
     			append_dev(main, article);
     			mount_component(tracker, article, null);
     			append_dev(main, t4);
     			append_dev(main, nav);
-    			append_dev(nav, h2);
-    			append_dev(main, t6);
+    			append_dev(nav, h20);
+    			append_dev(nav, t6);
+    			append_dev(nav, p1);
+    			append_dev(nav, t8);
+    			append_dev(nav, p2);
+    			append_dev(p2, t9);
+    			append_dev(p2, em0);
+    			append_dev(p2, t11);
+    			append_dev(nav, t12);
+    			append_dev(nav, p3);
+    			append_dev(p3, t13);
+    			append_dev(p3, em1);
+    			append_dev(p3, t15);
+    			append_dev(p3, em2);
+    			append_dev(p3, t17);
+    			append_dev(p3, em3);
+    			append_dev(p3, t19);
+    			append_dev(p3, em4);
+    			append_dev(p3, t21);
+    			append_dev(p3, em5);
+    			append_dev(p3, t23);
+    			append_dev(main, t24);
     			append_dev(main, div);
-    			append_dev(main, t8);
+    			append_dev(div, h21);
+    			append_dev(div, t26);
+    			append_dev(div, h30);
+    			append_dev(div, t28);
+    			append_dev(div, p4);
+    			append_dev(div, t30);
+    			append_dev(div, ul0);
+    			append_dev(ul0, li0);
+    			append_dev(ul0, t32);
+    			append_dev(ul0, li1);
+    			append_dev(ul0, t34);
+    			append_dev(ul0, li2);
+    			append_dev(div, t36);
+    			append_dev(div, h31);
+    			append_dev(div, t38);
+    			append_dev(div, ul1);
+    			append_dev(ul1, li3);
+    			append_dev(ul1, t40);
+    			append_dev(ul1, li4);
+    			append_dev(ul1, t42);
+    			append_dev(ul1, li5);
+    			append_dev(main, t44);
     			append_dev(main, footer);
     			current = true;
     		},
@@ -1377,16 +1550,46 @@ var app = (function () {
     	return block;
     }
 
+    function onMIDIFailure(msg) {
+    	console.log("Failed to get MIDI access - " + msg);
+    }
+
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
+    	let MIDI = { 'devices': [] };
+    	var midi = null;
+
+    	function onMIDISuccess(midiAccess) {
+    		console.log("MIDI Ready!");
+    		MIDI.devices.push(midiAccess);
+    	}
+
+    	navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
+    	console.log(MIDI.devices);
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ Tracker });
+    	$$self.$capture_state = () => ({
+    		Tracker,
+    		MIDI,
+    		midi,
+    		onMIDISuccess,
+    		onMIDIFailure
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('MIDI' in $$props) MIDI = $$props.MIDI;
+    		if ('midi' in $$props) midi = $$props.midi;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
     	return [];
     }
 
